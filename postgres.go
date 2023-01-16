@@ -51,7 +51,7 @@ func PostgresInit(urlPostgres string) (*DB, error) {
 	return &DB{db}, err
 }
 
-// Переделать на методы для DB
+// Переделать на методы для DB asd
 
 func (db *DB) FindFile(nameFile string, idUser int64) (*File, error) {
 	var result File
