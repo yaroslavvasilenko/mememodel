@@ -24,7 +24,7 @@ const (
 type File struct {
 	ID       string `gorm:"primaryKey"`
 	Name     string
-	Size     int
+	Size     int64
 	IdUser   int64
 	TypeFile int
 	MimeType string
