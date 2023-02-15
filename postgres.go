@@ -201,7 +201,7 @@ func (db *DB) SmartFindFile(nameFile string, idUser int64) (*[]File, error) {
 	var result []File
 	fileRegex := "%" + nameFile + "%"
 	tx := db.Postgres.Limit(5).
-		Where("name = ? AND name ILIKE ?", idUser, fileRegex).Find(&result)
+		Where("id_user = ? AND name ILIKE ?", idUser, fileRegex).Find(&result)
 	if tx.Error != nil {
 		return nil, tx.Error
 	}
