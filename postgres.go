@@ -196,3 +196,16 @@ func (db *DB) RenameFile(f *File) error {
 
 	return nil
 }
+
+func (db *DB) SmartFindFile(nameFile string, idUser int64) (*File, error) {
+	var result File
+	tx := db.Postgres.Raw(
+		`SELECT id, name, size, id_user, type_file, mime_type, message_id
+			 FROM files
+			 WHERE id_user = ? 
+			 AND name ILIKE '%?%'`, idUser, nameFile).Scan(&result)
+	if tx.Error != nil {
+		return nil, tx.Error
+	}
+	return &result, nil
+}
