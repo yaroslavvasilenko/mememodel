@@ -6,18 +6,14 @@ import (
 	"os"
 )
 
-func (f *File) DownloadFile(linkDowload string) error {
+func DownloadFile(linkDownload string, idFile string) error {
 
-	return downloadAny(linkDowload, FilePath+f.ID)
-}
-
-func downloadAny(id string, path string) error {
-	resp, err := http.Get(id)
+	resp, err := http.Get(idFile)
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
-	out, err := os.Create(path)
+	out, err := os.Create(FilePath + idFile)
 	if err != nil {
 		return err
 	}
