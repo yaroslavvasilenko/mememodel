@@ -8,7 +8,7 @@ import (
 
 func DownloadFile(linkDownload string, idFile string) error {
 
-	resp, err := http.Get(idFile)
+	resp, err := http.Get(linkDownload)
 	if err != nil {
 		return err
 	}
